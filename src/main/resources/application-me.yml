@@ -1,0 +1,52 @@
+qunzhi:
+  server:
+    host: 127.0.0.1
+  path:
+    root: E:\ideaWorkSpace\springboot01
+    file: ${qunzhi.path.root}/files
+    image: ${qunzhi.path.file}/image
+    video: ${qunzhi.path.file}/video
+    text: ${qunzhi.path.file}/text
+    audio: ${qunzhi.path.file}/audio
+    application: ${qunzhi.path.file}/application
+    logging: ${qunzhi.path.root}/logging
+    excel: ${qunzhi.path.file}/excel
+    coupon: ${qunzhi.path.excel}/coupon
+  test: true
+
+server:
+  port: 8080
+
+logback:
+  logdir: ${qunzhi.path.logging}
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://${qunzhi.server.host}:3306/student?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+##    url: jdbc:mysql://127.0.0.1:3306/wechat_finance_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+    hikari:
+      username: root
+#      password: Chkj@2017
+      password: 123456
+      auto-commit: true
+      transaction-isolation: TRANSACTION_READ_COMMITTED
+      connection-timeout: 60000
+      maximum-pool-size: 20
+      idle-timeout: 60000
+      max-lifetime: 1800000
+    initialization-mode: always
+  output:
+    ansi:
+      enabled: detect
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 120MB
+      max-request-size: 150MB
+  transaction:
+    default-timeout: 30
+    rollback-on-commit-failure: true
+#mybatis扫描 xxxmapper.xml路径
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
