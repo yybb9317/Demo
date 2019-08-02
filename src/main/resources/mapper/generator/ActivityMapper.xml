@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot01.dao.ActivityMapper">
+  <resultMap id="BaseResultMap" type="com.example.springboot01.entity.Activity">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="activity_name" jdbcType="VARCHAR" property="activityName" />
+    <result column="start_time" jdbcType="TIMESTAMP" property="startTime" />
+    <result column="end_time" jdbcType="TIMESTAMP" property="endTime" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="district" jdbcType="VARCHAR" property="district" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="cover" jdbcType="CHAR" property="cover" />
+    <result column="detail" jdbcType="VARCHAR" property="detail" />
+    <result column="cost_point" jdbcType="INTEGER" property="costPoint" />
+    <result column="created_on" jdbcType="TIMESTAMP" property="createdOn" />
+    <result column="updated_on" jdbcType="TIMESTAMP" property="updatedOn" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="created_by" jdbcType="CHAR" property="createdBy" />
+    <result column="reject_reason" jdbcType="VARCHAR" property="rejectReason" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, activity_name, start_time, end_time, province, city, district, location, cover, 
+    detail, cost_point, created_on, updated_on, state, created_by, reject_reason
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from activity
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from activity
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.springboot01.entity.Activity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into activity (activity_name, start_time, end_time, 
+      province, city, district, 
+      location, cover, detail, 
+      cost_point, created_on, updated_on, 
+      state, created_by, reject_reason
+      )
+    values (#{activityName,jdbcType=VARCHAR}, #{startTime,jdbcType=TIMESTAMP}, #{endTime,jdbcType=TIMESTAMP}, 
+      #{province,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{district,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{cover,jdbcType=CHAR}, #{detail,jdbcType=VARCHAR}, 
+      #{costPoint,jdbcType=INTEGER}, #{createdOn,jdbcType=TIMESTAMP}, #{updatedOn,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=TINYINT}, #{createdBy,jdbcType=CHAR}, #{rejectReason,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.springboot01.entity.Activity">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.String">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into activity
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="activityName != null">
+        activity_name,
+      </if>
+      <if test="startTime != null">
+        start_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="district != null">
+        district,
+      </if>
+      <if test="location != null">
+        location,
+      </if>
+      <if test="cover != null">
+        cover,
+      </if>
+      <if test="detail != null">
+        detail,
+      </if>
+      <if test="costPoint != null">
+        cost_point,
+      </if>
+      <if test="createdOn != null">
+        created_on,
+      </if>
+      <if test="updatedOn != null">
+        updated_on,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="rejectReason != null">
+        reject_reason,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="activityName != null">
+        #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null">
+        #{cover,jdbcType=CHAR},
+      </if>
+      <if test="detail != null">
+        #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="costPoint != null">
+        #{costPoint,jdbcType=INTEGER},
+      </if>
+      <if test="createdOn != null">
+        #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedOn != null">
+        #{updatedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="rejectReason != null">
+        #{rejectReason,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springboot01.entity.Activity">
+    update activity
+    <set>
+      <if test="activityName != null">
+        activity_name = #{activityName,jdbcType=VARCHAR},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="district != null">
+        district = #{district,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        location = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="cover != null">
+        cover = #{cover,jdbcType=CHAR},
+      </if>
+      <if test="detail != null">
+        detail = #{detail,jdbcType=VARCHAR},
+      </if>
+      <if test="costPoint != null">
+        cost_point = #{costPoint,jdbcType=INTEGER},
+      </if>
+      <if test="createdOn != null">
+        created_on = #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedOn != null">
+        updated_on = #{updatedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=CHAR},
+      </if>
+      <if test="rejectReason != null">
+        reject_reason = #{rejectReason,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+
+  <update id="updateByPrimaryKey" parameterType="com.example.springboot01.entity.Activity">
+    update activity
+    set activity_name = #{activityName,jdbcType=VARCHAR},
+      start_time = #{startTime,jdbcType=TIMESTAMP},
+      end_time = #{endTime,jdbcType=TIMESTAMP},
+      province = #{province,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      district = #{district,jdbcType=VARCHAR},
+      location = #{location,jdbcType=VARCHAR},
+      cover = #{cover,jdbcType=CHAR},
+      detail = #{detail,jdbcType=VARCHAR},
+      cost_point = #{costPoint,jdbcType=INTEGER},
+      created_on = #{createdOn,jdbcType=TIMESTAMP},
+      updated_on = #{updatedOn,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=TINYINT},
+      created_by = #{createdBy,jdbcType=CHAR},
+      reject_reason = #{rejectReason,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot01.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.example.springboot01.entity.UserInfo">
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="phone" jdbcType="CHAR" property="phone" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="nickname" jdbcType="CHAR" property="nickname" />
+    <result column="avatar" jdbcType="CHAR" property="avatar" />
+    <result column="gender" jdbcType="CHAR" property="gender" />
+    <result column="utype" jdbcType="TINYINT" property="utype" />
+    <result column="state" jdbcType="TINYINT" property="state" />
+    <result column="token" jdbcType="VARCHAR" property="token" />
+    <result column="frozen_reason" jdbcType="VARCHAR" property="frozenReason" />
+    <result column="frozen_on" jdbcType="TIMESTAMP" property="frozenOn" />
+    <result column="created_on" jdbcType="TIMESTAMP" property="createdOn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, phone, password, nickname, avatar, gender, utype, state, token, frozen_reason, 
+    frozen_on, created_on
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_info
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from user_info
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.springboot01.entity.UserInfo">
+    insert into user_info (id, phone, password, nickname, 
+      avatar, gender, utype, state, 
+      token, frozen_reason, frozen_on, 
+      created_on)
+    values (#{id,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{password,jdbcType=CHAR}, #{nickname,jdbcType=CHAR}, 
+      #{avatar,jdbcType=CHAR}, #{gender,jdbcType=CHAR}, #{utype,jdbcType=TINYINT}, #{state,jdbcType=TINYINT}, 
+      #{token,jdbcType=VARCHAR}, #{frozenReason,jdbcType=VARCHAR}, #{frozenOn,jdbcType=TIMESTAMP}, 
+      #{createdOn,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.springboot01.entity.UserInfo">
+    insert into user_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="utype != null">
+        utype,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="token != null">
+        token,
+      </if>
+      <if test="frozenReason != null">
+        frozen_reason,
+      </if>
+      <if test="frozenOn != null">
+        frozen_on,
+      </if>
+      <if test="createdOn != null">
+        created_on,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=CHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=CHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="utype != null">
+        #{utype,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=TINYINT},
+      </if>
+      <if test="token != null">
+        #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenReason != null">
+        #{frozenReason,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenOn != null">
+        #{frozenOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdOn != null">
+        #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.springboot01.entity.UserInfo">
+    update user_info
+    <set>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=CHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=CHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=CHAR},
+      </if>
+      <if test="gender != null">
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="utype != null">
+        utype = #{utype,jdbcType=TINYINT},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=TINYINT},
+      </if>
+      <if test="token != null">
+        token = #{token,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenReason != null">
+        frozen_reason = #{frozenReason,jdbcType=VARCHAR},
+      </if>
+      <if test="frozenOn != null">
+        frozen_on = #{frozenOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createdOn != null">
+        created_on = #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.springboot01.entity.UserInfo">
+    update user_info
+    set phone = #{phone,jdbcType=CHAR},
+      password = #{password,jdbcType=CHAR},
+      nickname = #{nickname,jdbcType=CHAR},
+      avatar = #{avatar,jdbcType=CHAR},
+      gender = #{gender,jdbcType=CHAR},
+      utype = #{utype,jdbcType=TINYINT},
+      state = #{state,jdbcType=TINYINT},
+      token = #{token,jdbcType=VARCHAR},
+      frozen_reason = #{frozenReason,jdbcType=VARCHAR},
+      frozen_on = #{frozenOn,jdbcType=TIMESTAMP},
+      created_on = #{createdOn,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

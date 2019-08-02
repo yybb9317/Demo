@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springboot01.dao.ActivityMapper">
+
+  <select id="listByName" resultMap="BaseResultMap">
+    SELECT <include refid="Base_Column_List"/>
+    FROM activity
+    <where>
+      <if test="title != null">
+        AND activity_name like CONCAT(CONCAT('%',#{title}),'%')
+      </if>
+      <if test="state != null and state.length > 0">
+        AND state IN
+        <foreach collection="state" item="s" separator="," open="(" close=")">
+          #{s}
+        </foreach>
+      </if>
+    </where>
+    ORDER BY state ASC , cost_point DESC, updated_on DESC
+    limit #{page}, #{size}
+  </select>
+</mapper>

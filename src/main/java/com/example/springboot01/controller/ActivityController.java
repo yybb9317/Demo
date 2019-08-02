@@ -3,6 +3,7 @@ package com.example.springboot01.controller;
 import com.example.springboot01.Service.ActivityService;
 import com.example.springboot01.response.TResponse;
 import com.example.springboot01.security.anno.CheckToken;
+import com.example.springboot01.security.anno.LoginToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
