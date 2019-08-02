@@ -29,20 +29,35 @@
             <property name="trimStrings" value="false"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources/generator">
+        <sqlMapGenerator targetPackage="generator" targetProject="src/main/resources/mapper">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
         <!-- 生成DAO的包名和位置-->
         <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.springboot01.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
+
+<!--        &lt;!&ndash; 生成模型的包名和位置&ndash;&gt;-->
+<!--        <javaModelGenerator targetPackage="entity" targetProject="src/main/java/generator">-->
+<!--            <property name="enableSubPackages" value="false"/>-->
+<!--            <property name="constructorBased" value="false"/>-->
+<!--            <property name="trimStrings" value="false"/>-->
+<!--        </javaModelGenerator>-->
+<!--        &lt;!&ndash; 生成映射文件的包名和位置&ndash;&gt;-->
+<!--        <sqlMapGenerator targetPackage="generator" targetProject="src/main/java/generator">-->
+<!--            <property name="enableSubPackages" value="false"/>-->
+<!--        </sqlMapGenerator>-->
+<!--        &lt;!&ndash; 生成DAO的包名和位置&ndash;&gt;-->
+<!--        <javaClientGenerator type="XMLMAPPER" targetPackage="dao" targetProject="src/main/java/generator">-->
+<!--            <property name="enableSubPackages" value="false"/>-->
+<!--        </javaClientGenerator>-->
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
-        <table tableName="activity" domainObjectName="Activity">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+        <table tableName="user_info" domainObjectName="UserInfo"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
-        <table tableName="banner" domainObjectName="Banner">
-            <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
-        </table>
+
+
 
     </context>
 </generatorConfiguration>

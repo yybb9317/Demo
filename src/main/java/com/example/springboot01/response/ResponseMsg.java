@@ -9,6 +9,7 @@ public final class ResponseMsg {
 
   public static final String BAD_REQUEST = "明显的客户端错误,传参错误";
   public static final String UNAUTHORIZED = "用户没有必要的凭据,身份无法验证";
+  public static final String TOKEN_EXPIR = "凭证过期，请重新登录";
   public static final String FORBIDDEN = "无权操作";
   public static final String NOT_FOUND = "请求资源未找到";
   public static final String TOO_MANY_REQUESTS = "给定的时间内发送了太多的请求";

@@ -17,8 +17,10 @@ public enum ResponseEnum implements Response {
   // client error
   BAD_REQUEST(400, 400, ResponseMsg.BAD_REQUEST), // 明显的客户端错误,传参错误
   UNAUTHORIZED(401, 401, ResponseMsg.UNAUTHORIZED), // 用户没有必要的凭据,身份无法验证
+  TOKEN_EXPIR(402, 402, ResponseMsg.TOKEN_EXPIR), // 凭证过期，请重新登录
   FORBIDDEN(403, 403, ResponseMsg.FORBIDDEN), // 无权操作
   NOT_FOUND(404, 404, ResponseMsg.NOT_FOUND), // 请求资源未找到
+  SINGLE_SIGN_ON(405, 405, ResponseMsg.SINGLE_SIGN_ON), // 请求资源未找到
   TOO_MANY_REQUESTS(429, 429, ResponseMsg.TOO_MANY_REQUESTS), // 给定的时间内发送了太多的请求
 
   // server error

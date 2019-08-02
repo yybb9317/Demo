@@ -23,8 +23,8 @@ logback:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://${qunzhi.server.host}:3306/student?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
-##    url: jdbc:mysql://127.0.0.1:3306/wechat_finance_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false
+#    url: jdbc:mysql://${qunzhi.server.host}:3306/student?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
+    url: jdbc:mysql://127.0.0.1:3306/wechat_finance_db?autoReconnect=true&useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC
     hikari:
       username: root
 #      password: Chkj@2017
@@ -36,6 +36,22 @@ spring:
       idle-timeout: 60000
       max-lifetime: 1800000
     initialization-mode: always
+  redis:
+    host: ${qunzhi.server.host}
+    port: 6399
+    database: 5
+    password: 123456
+    timeout: 60000
+    jedis:
+      pool:
+        max-idle: 100
+        min-idle: 20
+        max-active: 50
+        max-wait: 150000
+    cache:
+      redis:
+        time-to-live: 3600000
+        key-prefix: "s:"
   output:
     ansi:
       enabled: detect
@@ -49,4 +65,4 @@ spring:
     rollback-on-commit-failure: true
 #mybatis扫描 xxxmapper.xml路径
 mybatis:
-  mapper-locations: classpath:mapper/*.xml
+  mapper-locations: classpath:mapper/**/*.xml
