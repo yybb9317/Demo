@@ -32,7 +32,8 @@ public final class TConst {
 
   public static final int REDEEM_CODE_SIZE = 15;
 
-  public static final String SERVER_URL = "http://120.78.85.125/api";
+  // TODO 修改回调地址
+  public static final String SERVER_URL = "http://127.0.0.1/qunzhi";
   public static final String THIRD_PARTY_CALLBACK = SERVER_URL + "/callback";
 
   /**

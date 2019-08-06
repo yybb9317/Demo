@@ -23,9 +23,17 @@ public final class AccountConst {
 
     @NoArgsConstructor(access = AccessLevel.PRIVATE)
     public class AccountConfig {
-        //非比
-        @Value("feibi.enterprise.id")
-        public String feibiEnterpriseId;
+        //微信
+        @Value("wx.app-id")
+        public String wxAppId;
+        @Value("wx.app-key")
+        public String wxAppKey;
+        @Value("wx.mch-id")
+        public String wxMchId;
+        @Value("wx.secret-key")
+        public String wxSecretKey;
+        @Value("wx.cert.path")
+        public String wxCertPath;
     }
 
     static {

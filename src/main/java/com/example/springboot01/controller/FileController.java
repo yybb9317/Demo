@@ -24,6 +24,7 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/files")
 @Slf4j
+@CrossOrigin
 public class FileController {
 
     @Autowired
@@ -35,7 +36,6 @@ public class FileController {
      * @date 2019/8/5 11:05
      */
     @PostMapping("/upload")
-    @CrossOrigin
     public ResponseEntity upload(
             @RequestParam(defaultValue = "other") String type,  //文件类型,IMAGE,VIDEO,OTHER
             @RequestParam MultipartFile file
@@ -49,7 +49,6 @@ public class FileController {
      * @date 2019/8/5 11:08
      */
     @GetMapping("download/{id}")
-    @CrossOrigin
     public ResponseEntity download(
             @PathVariable String id,         //文件id
             HttpServletRequest request,

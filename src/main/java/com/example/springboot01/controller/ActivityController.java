@@ -10,20 +10,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/activity")
+@CrossOrigin
 public class ActivityController {
 
     @Autowired
     private ActivityService activityService;
 
     @GetMapping(value = "/get")
-    @CrossOrigin
     public ResponseEntity getActivity(@RequestParam String id) {
         return TResponse.success(activityService.getActivity(id));
     }
 
     @GetMapping(value = "/list")
     @CheckToken
-    @CrossOrigin
     public ResponseEntity listActivity(
             @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "1") Integer page,

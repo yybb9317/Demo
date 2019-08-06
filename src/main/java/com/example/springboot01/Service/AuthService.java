@@ -8,7 +8,6 @@ import com.example.springboot01.exception.TException;
 import com.example.springboot01.pojo.UserInfoDTO;
 import com.example.springboot01.pojo.UserLoginDTO;
 import com.example.springboot01.response.ResponseEnum;
-import com.example.springboot01.security.SingleSignOn;
 import com.example.springboot01.security.jwt.JwtUser;
 import com.example.springboot01.security.jwt.JwtUtil;
 import com.example.springboot01.utility.BeanUtil;
@@ -26,7 +25,7 @@ import java.util.Date;
  * @date: 2019/8/1  14:32
  */
 @Service
-public class UserInfoService {
+public class AuthService {
     @Resource
     private UserInfoMapper userMapper;
 

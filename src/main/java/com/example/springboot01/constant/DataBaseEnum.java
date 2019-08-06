@@ -31,6 +31,14 @@ public final class DataBaseEnum {
         OTHER                           //其他
     }
 
+    /**
+     * 积分订单类型
+     */
+    public enum OrderType implements Ordinal {
+        CHARGE,                         //充值
+        WITHDRAW                        //提现
+    }
+
     public interface Ordinal {
 
         int ordinal();
