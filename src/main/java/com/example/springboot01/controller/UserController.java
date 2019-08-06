@@ -4,10 +4,7 @@ import com.example.springboot01.Service.UserInfoService;
 import com.example.springboot01.response.TResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @title:
@@ -21,6 +18,7 @@ public class UserController {
     UserInfoService userInfoService;
 
     @PostMapping("/signup")
+    @CrossOrigin()
     public ResponseEntity Signup(
             @RequestParam String phone,
             @RequestParam String password
@@ -29,6 +27,7 @@ public class UserController {
     }
 
     @PostMapping("/login")
+    @CrossOrigin
     public ResponseEntity Login(
             @RequestParam String phone,
             @RequestParam String password

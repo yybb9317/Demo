@@ -32,4 +32,13 @@ public final class SingleSignOn {
         return false;
     }
 
+    /**
+     * @description:  新建单例/将原有用户挤掉线
+     * @Author Bob
+     * @date 2019/8/5 10:38
+     */
+    public static void put(String id, Date expire) {
+        SSO.put(id, expire);
+    }
+
 }

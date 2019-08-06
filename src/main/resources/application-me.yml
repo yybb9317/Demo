@@ -1,8 +1,9 @@
 qunzhi:
   server:
     host: 127.0.0.1
+
   path:
-    root: E:\ideaWorkSpace\springboot01
+    root: E:/springboot01
     file: ${qunzhi.path.root}/files
     image: ${qunzhi.path.file}/image
     video: ${qunzhi.path.file}/video
@@ -15,7 +16,11 @@ qunzhi:
   test: true
 
 server:
-  port: 8080
+  port: 9090
+  tomcat:
+    max-connections: 60000
+  servlet:
+    context-path: /qunzhi
 
 logback:
   logdir: ${qunzhi.path.logging}

@@ -4,9 +4,5 @@ spring:
 
 qunzhi:
   config:
-    timezone: UTC+0
-    key-point-rule: pointRule
 
   constant:
-    sysname: 系统用户
-    pass-verify: 已通过

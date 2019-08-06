@@ -22,6 +22,15 @@ public final class DataBaseEnum {
 //        DELETED,                        //删除
     }
 
+    /**
+     * 文件枚举
+     */
+    public enum DocType implements Ordinal {
+        IMAGE,                          //图片
+        VIDEO,                          //视频
+        OTHER                           //其他
+    }
+
     public interface Ordinal {
 
         int ordinal();

@@ -8,6 +8,7 @@ import com.example.springboot01.exception.TException;
 import com.example.springboot01.pojo.UserInfoDTO;
 import com.example.springboot01.pojo.UserLoginDTO;
 import com.example.springboot01.response.ResponseEnum;
+import com.example.springboot01.security.SingleSignOn;
 import com.example.springboot01.security.jwt.JwtUser;
 import com.example.springboot01.security.jwt.JwtUtil;
 import com.example.springboot01.utility.BeanUtil;
@@ -80,8 +81,8 @@ public class UserInfoService {
         BeanUtil.copy(user, info);
 
         // generate token
-        String token = JwtUtil.create(new JwtUser(user.getId(), user.getPhone(), user.getPassword(),
-                new Date(System.currentTimeMillis() + TConst.APP_EXPIRE)));
+        Date expire = new Date(System.currentTimeMillis() + TConst.APP_EXPIRE);
+        String token = JwtUtil.create(new JwtUser(user.getId(), user.getPhone(), user.getPassword(), expire));
 
         return new UserLoginDTO(info, token);
     }

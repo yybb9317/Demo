@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -37,9 +39,9 @@ public class Activity implements Serializable {
 
     private Integer costPoint;
 
-    private Date createdOn;
+    private LocalDateTime createdOn;
 
-    private Date updatedOn;
+    private LocalDateTime updatedOn;
 
     private Byte state;
 

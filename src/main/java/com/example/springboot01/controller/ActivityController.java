@@ -6,10 +6,7 @@ import com.example.springboot01.security.anno.CheckToken;
 import com.example.springboot01.security.anno.LoginToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/activity")
@@ -19,12 +16,14 @@ public class ActivityController {
     private ActivityService activityService;
 
     @GetMapping(value = "/get")
+    @CrossOrigin
     public ResponseEntity getActivity(@RequestParam String id) {
         return TResponse.success(activityService.getActivity(id));
     }
 
     @GetMapping(value = "/list")
     @CheckToken
+    @CrossOrigin
     public ResponseEntity listActivity(
             @RequestParam(required = false) String title,
             @RequestParam(defaultValue = "1") Integer page,
