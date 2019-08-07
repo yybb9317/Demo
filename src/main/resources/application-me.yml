@@ -43,7 +43,7 @@ spring:
     initialization-mode: always
   redis:
     host: ${qunzhi.server.host}
-    port: 6399
+    port: 6379
     database: 5
     password: 123456
     timeout: 60000

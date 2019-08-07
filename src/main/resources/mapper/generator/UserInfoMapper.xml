@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.example.springboot01.dao.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.example.springboot01.entity.UserInfo">
+<mapper namespace="com.qunzhi.yespmp.dao.UserInfoMapper">
+  <resultMap id="BaseResultMap" type="com.qunzhi.yespmp.entity.UserInfo">
     <id column="id" jdbcType="CHAR" property="id" />
     <result column="phone" jdbcType="CHAR" property="phone" />
     <result column="password" jdbcType="CHAR" property="password" />
@@ -29,7 +29,7 @@
     delete from user_info
     where id = #{id,jdbcType=CHAR}
   </delete>
-  <insert id="insert" parameterType="com.example.springboot01.entity.UserInfo">
+  <insert id="insert" parameterType="com.qunzhi.yespmp.entity.UserInfo">
     insert into user_info (id, phone, password, nickname, 
       avatar, gender, utype, state, 
       token, frozen_reason, frozen_on, 
@@ -39,7 +39,7 @@
       #{token,jdbcType=VARCHAR}, #{frozenReason,jdbcType=VARCHAR}, #{frozenOn,jdbcType=TIMESTAMP}, 
       #{createdOn,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.example.springboot01.entity.UserInfo">
+  <insert id="insertSelective" parameterType="com.qunzhi.yespmp.entity.UserInfo">
     insert into user_info
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -118,7 +118,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.example.springboot01.entity.UserInfo">
+  <update id="updateByPrimaryKeySelective" parameterType="com.qunzhi.yespmp.entity.UserInfo">
     update user_info
     <set>
       <if test="phone != null">
@@ -157,7 +157,7 @@
     </set>
     where id = #{id,jdbcType=CHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.example.springboot01.entity.UserInfo">
+  <update id="updateByPrimaryKey" parameterType="com.qunzhi.yespmp.entity.UserInfo">
     update user_info
     set phone = #{phone,jdbcType=CHAR},
       password = #{password,jdbcType=CHAR},
