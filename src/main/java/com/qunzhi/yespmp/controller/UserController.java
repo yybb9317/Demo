@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
  * @date: 2019/8/6  12:22
  */
 @Controller
-@CrossOrigin
 @RequestMapping("/user/{uid}")
 public class UserController {
     @Autowired

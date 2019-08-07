@@ -20,7 +20,7 @@ public enum ResponseEnum implements Response {
   TOKEN_EXPIR(402, 402, ResponseMsg.TOKEN_EXPIR), // 凭证过期，请重新登录
   FORBIDDEN(403, 403, ResponseMsg.FORBIDDEN), // 无权操作
   NOT_FOUND(404, 404, ResponseMsg.NOT_FOUND), // 请求资源未找到
-  SINGLE_SIGN_ON(405, 405, ResponseMsg.SINGLE_SIGN_ON), // 请求资源未找到
+  SINGLE_SIGN_ON(405, 405, ResponseMsg.SINGLE_SIGN_ON), // 账号在别处登录
   TOO_MANY_REQUESTS(429, 429, ResponseMsg.TOO_MANY_REQUESTS), // 给定的时间内发送了太多的请求
 
   // server error

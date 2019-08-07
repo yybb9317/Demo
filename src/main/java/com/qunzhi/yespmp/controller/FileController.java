@@ -24,7 +24,6 @@ import java.time.LocalDateTime;
 @RestController
 @RequestMapping("/files")
 @Slf4j
-@CrossOrigin
 public class FileController {
 
     @Autowired

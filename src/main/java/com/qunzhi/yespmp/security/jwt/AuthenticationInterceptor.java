@@ -2,10 +2,10 @@ package com.qunzhi.yespmp.security.jwt;
 
 import com.qunzhi.yespmp.exception.TException;
 import com.qunzhi.yespmp.response.ResponseEnum;
+import com.qunzhi.yespmp.security.SingleSignOn;
 import com.qunzhi.yespmp.security.anno.CheckToken;
 import com.qunzhi.yespmp.security.anno.LoginToken;
 import com.qunzhi.yespmp.utility.userlimit.BlackHouse;
-import com.qunzhi.yespmp.utility.userlimit.SingleSignOn;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

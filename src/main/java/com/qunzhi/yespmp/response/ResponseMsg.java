@@ -29,7 +29,7 @@ public final class ResponseMsg {
   public static final String INVALID_EMAIL = "邮箱格式错误";
   public static final String WRONG_OLD_PASSWORD = "旧密码错误";
   public static final String INVALID_LOGIN = "用户名或密码错误";
-  public static final String SINGLE_SIGN_ON = "账号已在别处登录";
+  public static final String SINGLE_SIGN_ON = "账号在别处登录";
   public static final String CAPTCHA_FAIL = "验证码错误";
   public static final String ORDER_PAID_CANCEL = "订单已支付或已取消";
   public static final String WXPAY_FAIL = "微信支付失败";

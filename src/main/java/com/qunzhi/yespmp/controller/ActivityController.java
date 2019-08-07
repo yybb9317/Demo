@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/activity")
-@CrossOrigin
 public class ActivityController {
 
     @Autowired

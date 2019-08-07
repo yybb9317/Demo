@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.*;
  */
 @RestController
 @RequestMapping("/authentication")
-@CrossOrigin
 public class AuthController {
     @Autowired
     AuthService userInfoService;
 
     /**
-     * @description:  登录
+     * @description:  注册
      * @Author Bob
      * @date 2019/8/6 15:14
      */
@@ -32,7 +31,7 @@ public class AuthController {
     }
 
     /**
-     * @description:  注册
+     * @description:  登录
      * @Author Bob
      * @date 2019/8/6 15:14
      */
@@ -42,5 +41,17 @@ public class AuthController {
             @RequestParam String password
     ) {
         return TResponse.success(userInfoService.login(phone, password));
+    }
+
+    /**
+     * @description:   登出(返回过期token)
+     * @Author Bob
+     * @date 2019/8/7 18:04
+     */
+    @PostMapping("/logout")
+    public ResponseEntity Logout(
+            @RequestParam String phone
+    ) {
+        return TResponse.success(userInfoService.logout(phone));
     }
 }

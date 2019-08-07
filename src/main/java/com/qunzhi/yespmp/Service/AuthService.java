@@ -8,6 +8,7 @@ import com.qunzhi.yespmp.exception.TException;
 import com.qunzhi.yespmp.pojo.UserInfoDTO;
 import com.qunzhi.yespmp.pojo.UserLoginDTO;
 import com.qunzhi.yespmp.response.ResponseEnum;
+import com.qunzhi.yespmp.security.SingleSignOn;
 import com.qunzhi.yespmp.security.jwt.JwtUser;
 import com.qunzhi.yespmp.security.jwt.JwtUtil;
 import com.qunzhi.yespmp.utility.BeanUtil;
@@ -84,6 +85,22 @@ public class AuthService {
         String token = JwtUtil.create(new JwtUser(user.getId(), user.getPhone(), user.getPassword(), expire));
 
         return new UserLoginDTO(info, token);
+    }
+
+    /**
+     * @description:  登出账号
+     * @Author Bob
+     * @date 2019/8/7 18:07
+     */
+    public String logout(String phone) {
+        UserInfo user = userMapper.selectByPhone(phone);
+        if (user == null) {
+            throw TException.of(ResponseEnum.USER_NOT_EXIST);
+        }
+        Date expire = new Date(System.currentTimeMillis());
+        String token = JwtUtil.create(new JwtUser(user.getId(), user.getPhone(), user.getPassword(), expire));
+
+        return token;
     }
 
     /**
