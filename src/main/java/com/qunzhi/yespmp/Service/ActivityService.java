@@ -5,7 +5,6 @@ import com.qunzhi.yespmp.entity.Activity;
 import com.qunzhi.yespmp.pojo.ActivityDTO;
 import com.qunzhi.yespmp.response.TPage;
 import com.qunzhi.yespmp.utility.BeanUtil;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,8 +20,6 @@ public class ActivityService {
 
     @Resource
     private ActivityMapper activityMapper;
-//    @Autowired
-//    private StringRedisUtil stringRedis;
 
     /**
      * @description: 根据id获取活动
@@ -30,7 +27,6 @@ public class ActivityService {
      * @date 2019/8/2 10:39
      */
     public Activity getActivity(String id) {
-//        stringRedis.set("1","123");
         return activityMapper.selectByPrimaryKey(id);
     }
 
@@ -40,8 +36,6 @@ public class ActivityService {
      * @date 2019/8/2 10:39
      */
     public TPage<ActivityDTO> listActivity(String title, Integer  page, Integer  size) {
-//        String b = stringRedis.get("1");
-//        System.out.println(b);
         page = page - 1;
         List<Activity> result = activityMapper.listByName(title, page, size, null);
 
